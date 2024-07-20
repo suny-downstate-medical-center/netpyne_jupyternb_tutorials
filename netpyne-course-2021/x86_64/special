@@ -1,0 +1,17 @@
+#!/bin/sh
+if test "x${NRNHOME}" = "x" ; then
+    NRNHOME="/Users/salvadord/venvs/neuron78/lib/python3.8/site-packages/neuron/.data"
+fi
+if test "${NEURONHOME}" = "" ; then
+    NEURONHOME=${NRNHOME}/share/nrn
+    export NEURONHOME
+fi
+if test "x${NRNBIN}" = "x" ; then
+    NRNBIN="/u/salvadord/venvs/neuron78/bin"
+fi
+if test "" = "yes" ; then
+    NRNIV="${NRNBIN}/nrniv.app/Contents/MacOS/nrniv"
+else
+    NRNIV="${NRNBIN}/nrniv"
+fi
+"${NRNIV}" -dll "/Users/salvadord/Documents/ISB/Models/netpyne_repo/netpyne/tutorials/netpyne-course-2021/x86_64/.libs/libnrnmech.so" "$@"
